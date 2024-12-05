@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block content %}
+
+    {% if app.user.permission.nama == 'Admin' %}
+    <div class="col-xxl-4 col-md-6">
+        <div class="card info-card revenue-card">
+            <div class="card-body">
+                <h5 class="card-title">Total Post</h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6><strong>{{ totalPost }}</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-6">
+        <div class="card info-card revenue-card">
+            <div class="card-body">
+                <h5 class="card-title">Total User</h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi-person-arms-up"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6><strong>{{ totalUser }}</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Comments</h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi-command"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6><strong>{{ totalComment }}</strong></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+    {% if app.user.permission.nama == 'Public' %}
+    <div class="col-xxl-4 col-md-6">
+        <div class="card info-card revenue-card">
+            <div class="card-body">
+                <h5 class="card-title">Total Post</h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6><strong>{{ totalPost }}</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Comments</h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi-command"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6><strong>{{ totalComment }}</strong></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

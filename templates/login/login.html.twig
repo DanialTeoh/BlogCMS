@@ -1,0 +1,82 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Login</title>
+    <link rel="icon" href="{{ asset('dashtreme/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link href="{{ asset('dashtreme/assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/animate.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/icons.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/app-style.css') }}" rel="stylesheet"/>
+</head>
+
+<body id="theme" class="bg-theme bg-theme5">
+<div id="wrapper">
+    <div class="card card-authentication1 mx-auto my-5">
+        <div class="card-body">
+            <div class="card-content p-2">
+                <div class="text-center">
+                    <img src="{{ asset('dashtreme/assets/images/logo-icon.png') }}" alt="logo icon">
+                </div>
+                <br>
+                <div class="text-center"><a>
+                        <strong>LOGIN</strong>
+                    </a>
+                </div>
+                <div class="card-title text-uppercase text-center py-3"></div>
+
+                <form method="post" action="{{ path('app_login') }}">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Username</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="text" name="_username" id="username" class="form-control input-shadow"
+                                   placeholder="Enter Username" value="{{ last_username }}" required autofocus>
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <div class="position-relative has-icon-right">
+                            <input type="password" name="_password" id="password" class="form-control input-shadow"
+                                   placeholder="Enter Password" required>
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {# Uncomment the following block if "Remember Me" functionality is needed later #}
+                    {# <div class="checkbox mb-3">
+                        <input type="checkbox" name="_remember_me" id="_remember_me">
+                        <label for="_remember_me">Remember me</label>
+                    </div> #}
+
+                    <button type="submit" class="btn btn-light btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-center py-3">
+            <p class="text-warning mb-0">Don't have an account? <a href="{{ path('app_register') }}">Register here</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('dashtreme/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/sidebar-menu.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/app-script.js') }}"></script>
+</body>
+</html>
+{% endblock %}

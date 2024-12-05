@@ -1,0 +1,93 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Register</title>
+    <link rel="icon" href="{{ asset('dashtreme/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link href="{{ asset('dashtreme/assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/animate.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/icons.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('dashtreme/assets/css/app-style.css') }}" rel="stylesheet"/>
+</head>
+
+<body class="bg-theme bg-theme2">
+<div id="wrapper">
+    <div class="card card-authentication1 mx-auto my-4">
+        <div class="card-body">
+            <div class="card-content p-2">
+                <div class="text-center">
+                    <img src="{{ asset('dashtreme/assets/images/logo-icon.png') }}" alt="logo icon">
+                </div>
+                <br>
+                <div class="text-center">
+                    <a>
+                        <strong>REGISTER</strong>
+                    </a>
+                </div>
+                <div class="card-title text-uppercase text-center py-3"></div>
+
+                {{ form_start(registrationForm) }}
+                    {{ form_errors(registrationForm) }}
+
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Username</label>
+                        <div class="position-relative has-icon-right">
+                            {{ form_widget(registrationForm.username, { 'attr': {'class': 'form-control input-shadow', 'placeholder': 'Enter Your Username'} }) }}
+                            <div class="form-control-position">
+                                <i class="icon-user"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email ID</label>
+                        <div class="position-relative has-icon-right">
+                            {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control input-shadow', 'placeholder': 'Enter Your Email ID'} }) }}
+                            <div class="form-control-position">
+                                <i class="icon-envelope-open"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plainPassword" class="sr-only">Password</label>
+                        <div class="position-relative has-icon-right">
+                            {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control input-shadow', 'placeholder': 'Choose Password'} }) }}
+                            <div class="form-control-position">
+                                <i class="icon-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="icheck-material-white">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                            <label for="user-checkbox"></label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-light btn-block waves-effect waves-light">Register</button>
+                {{ form_end(registrationForm) }}
+
+            </div>
+        </div>
+        <div class="card-footer text-center py-3">
+            <p class="text-warning mb-0">Already have an account? <a href="{{ path('app_login') }}"> Login here</a></p>
+        </div>
+    </div>
+
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+
+</div><!--wrapper-->
+
+<script src="{{ asset('dashtreme/assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/sidebar-menu.js') }}"></script>
+<script src="{{ asset('dashtreme/assets/js/app-script.js') }}"></script>
+
+</body>
+</html>
+{% endblock %}

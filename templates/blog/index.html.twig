@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<body>
+{{ include('blog/header.html.twig') }}
+<main>
+    <!--? Slider Area Start-->
+    <section class="slider-area slider-area2">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider slider-height2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-11 col-md-12">
+                            <div class="hero__caption hero__caption2">
+                                <h1 data-animation="bounceIn" data-delay="0.2s">RECENT POSTS</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--? Blog Area Start-->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Left Sidebar -->
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for post in posts %} {# kena tambah benda ni kalau nak amik dari controller lain #}
+                            <article class="blog_item" style="border:5px solid black;">
+                                <div class="blog_item_img">
+                                    <img class="card-img rounded-0 img-fluid" src="{{ asset('uploads/profile_pictures/' ~ post.postPicture) }}" alt="Post Image" style="max-width: 50%; height: 50%;">
+                                    <a href="{{ path('app_post_show', {'id': post.id}) }}" class="blog_item_date">
+                                        <h3>{{ post.createdAt ? post.createdAt|date('d') : '' }}</h3>
+                                        <p>{{ post.createdAt ? post.createdAt|date('M') : '' }}</p>
+                                    </a>
+                                </div>
+                                <div class="blog_details" style="white-space: normal; word-wrap: break-word; word-break: break-word;">
+                                    <h1> <strong> Author: </strong> {{ post.author.username }} </h1>
+                                    <a class="d-inline-block"  href="{{ path('app_post_show', {'id': post.id}) }}">  {# ni nanti dia boleh macam bukak post tu untuk tengok komen ke apa #}
+                                        <h2 class="blog-head" style="color: #2d2d2d;">{{ post.title |slice(0, 50) ~ ' ...'  }}</h2>
+                                    </a>
+                                    <p>{{ post.content|slice(0, 150) ~ '...' }}</p>
+                                </div>
+                            </article>
+                        {% else %}
+                            <p>No posts found.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Area End -->
+</main>
+
+{{ include('blog/footer.html.twig') }}
+
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+</body>
+</html>

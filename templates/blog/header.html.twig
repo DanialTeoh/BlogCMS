@@ -1,0 +1,108 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>BlogCMS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('courses/assets/img/favicon.ico') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/hamburgers.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('courses/assets/css/responsive.css') }}">
+</head>
+
+<header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header ">
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="{{ path('app_blog') }}"><img src="{{ asset('courses/assets/img/logo/logo.png') }}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu d-none d-lg-block">
+                                    {% if app.user.permission.nama == 'Admin' %} {# kalau 'admin ' in app.user.permission = ManyToMany, kalau OneToMany macam biasa#}
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li> <a class="active">Admin</a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{ path('app_flag_index') }}">Flag</a></li>
+                                                    <li><a href="{{ path('app_rujukan_index') }}">Rujukan</a></li>
+                                                    <li><a href="{{ path('app_user_index') }}">Users</a></li>
+                                                </ul>
+                                            <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
+                                            <li><a href="{{ path('app_blog') }}">Browse</a></li>
+                                            <li> <a class="active">Posts</a>
+                                            <ul class="submenu">
+                                                <li><a href="{{ path('app_post_new',{'id': app.user.id} )}}">Create Post</a></li>
+                                                <li><a href="{{ path('app_post_index') }}">My Posts</a></li>
+                                            </ul>
+                                            <li>
+                                                <a class="active">
+                                                    Welcome, &nbsp; {{ app.user.username }}
+                                                    <img src="{{ asset('uploads/profile_pictures/' ~ app.user.picture) }}" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; margin-left: 10px;" />
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{ path('app_user_show', {'id': app.user.id}) }}">My Profile</a></li>
+                                                    <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    {% endif %}
+
+                                    {% if app.user.permission.nama == 'Public' %} {# kalau 'admin ' in app.user.permission = ManyToMany, kalau OneToMany macam biasa#}
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
+                                                <li><a href="{{ path('app_blog') }}">Browse</a></li>
+                                                <li> <a class="active">Posts</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{{ path('app_post_new',{'id': app.user.id} )}}">Create Post</a></li>
+                                                        <li><a href="{{ path('app_post_index') }}">My Posts</a></li>
+                                                    </ul>
+                                                <li>
+                                                    <a class="active">
+                                                        Welcome, &nbsp; {{ app.user.username }}
+                                                        <img src="{{ asset('uploads/profile_pictures/' ~ app.user.picture) }}" alt="Profile Picture" style="width: 30px; height: 30px; border-radius: 50%; margin-left: 10px;" />
+                                                    </a>
+                                                    <ul class="submenu">
+                                                        <li><a href="{{ path('app_user_show', {'id': app.user.id}) }}">My Profile</a></li>
+                                                        <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>

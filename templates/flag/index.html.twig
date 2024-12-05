@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Flag index{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Table with stripped rows -->
+                        <br>
+                        <div style="display: flex; align-items: center; gap: 1000px;">
+                            <h2><strong>Flag</strong></h2>
+                            <a class="btn btn-success" href="{{ path('app_flag_new') }}">Create new</a>
+                        </div>
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nama</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for flag in flags %}
+                                <tr>
+                                    <td>{{ flag.id }}</td>
+                                    <td>{{ flag.nama }}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ path('app_flag_show', {'id': flag.id}) }}">show</a>
+                                        <a class="btn btn-info" href="{{ path('app_flag_edit', {'id': flag.id}) }}">edit</a>
+                                        <a class="btn btn-dark" href="{{ path('app_rujukan_list', {'id': flag.id}) }}">
+                                            <i class="fas fa-list" data-toggle="tooltip" title="List"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
